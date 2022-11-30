@@ -1,0 +1,81 @@
+﻿@model IEnumerable<BaiTapDoAn.Areas.Admin.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn mb-1 btn-primary" asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped table-bordered zero-configuration">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDecription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CatId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDecription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Img)
+            </td>
+            <td>
+                    @if (@item.Status == 1)
+                    {
+                        <span>Hoạt động</span>
+                    }else{
+                    <span>Không hoạt động</span>
+                    }
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cat.Name)
+            </td>
+            <td>
+                    <div class="button-group">
+                        <div class="btn-group">
+                            <button asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Sửa</button>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Xem</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Xóa</a>
+                        </div>
+                    </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
