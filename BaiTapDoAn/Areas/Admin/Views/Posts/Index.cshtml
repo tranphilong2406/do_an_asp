@@ -1,5 +1,6 @@
-﻿@model IEnumerable<BaiTapDoAn.Areas.Admin.Models.Post>
-
+﻿@model X.PagedList.IPagedList<BaiTapDoAn.Areas.Admin.Models.Post>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -14,59 +15,59 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                Tiêu đề
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ShortDecription)
+                Mô tả ngắn
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FullContent)
+                Nội dung
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Img)
+                Hình ảnh
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                Trạng thái
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                Tác giả
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CatId)
+                Chuyên mục
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.Raw(@item.ShortDecription)
-            </td>
-            <td>
-                @Html.Raw(@item.FullContent)
-            </td>
-            <td>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.Raw(@item.ShortDecription)
+                </td>
+                <td>
+                    @Html.Raw(@item.FullContent)
+                </td>
+                <td>
                     <img src="~/images/@Html.DisplayFor(modelItem => item.Img)" alt="Hình ảnh" style="height: 100px;width: 110px;" />
-            </td>
-            <td>
+                </td>
+                <td>
                     @if (@item.Status == 1)
                     {
                         <span>Hoạt động</span>
-                    }else{
-                    <span>Không hoạt động</span>
+                    } else {
+                        <span>Không hoạt động</span>
                     }
                 </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cat.Name)
-            </td>
-            <td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cat.Name)
+                </td>
+                <td>
                     <div class="button-group">
                         <div class="btn-group">
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Sửa</a>
@@ -74,8 +75,24 @@
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Xóa</a>
                         </div>
                     </div>
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+ Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+
+<div class="bootstrap-pagination">
+    <nav>
+        <ul class="pagination">
+            @for(int i = 1;i<=Model.PageCount;i++){
+            <li class="page-item">
+                <a class="page-link" href="/Admin/Posts?page=@i">@i</a>
+            </li>
+            }
+        </ul>
+    </nav>
+</div>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BaiTapDoAn.Areas.Admin.Models;
 using BaiTapDoAn.Areas.Admin.Filter;
+using X.PagedList;
 
 namespace BaiTapDoAn.Areas.Admin.Controllers
 {
@@ -22,10 +23,13 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
         }
 
         // GET: Admin/Posts
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int? page)
         {
-            var db_bigexamContext = _context.Posts.Include(p => p.AuthorNavigation).Include(p => p.Cat);
-            return View(await db_bigexamContext.ToListAsync());
+            if (page == null) page = 1;
+            var db_bigexamContext = _context.Posts.Include(p => p.AuthorNavigation).Include(p => p.Cat).OrderBy(p=>p.Id);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(db_bigexamContext.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/Posts/Details/5

@@ -270,3 +270,7 @@ G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\System.Web.WebPages.Deployment.dl
 G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
 G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\System.Web.WebPages.dll
 G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+G:\core\BaiTapDoAn\BaiTapDoAn\obj\Debug\net6.0\BaiTapDoAn.MvcApplicationPartsAssemblyInfo.cs
+G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\JetBrains.Annotations.dll
+G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\X.PagedList.dll
+G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll
