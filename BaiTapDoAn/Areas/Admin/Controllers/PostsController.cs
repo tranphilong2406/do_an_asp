@@ -27,7 +27,7 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
         {
             if (page == null) page = 1;
             var db_bigexamContext = _context.Posts.Include(p => p.AuthorNavigation).Include(p => p.Cat).OrderBy(p=>p.Id);
-            int pageSize = 3;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(db_bigexamContext.ToPagedList(pageNumber, pageSize));
         }
