@@ -1,5 +1,6 @@
 ﻿using BaiTapDoAn.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BaiTapDoAn.Areas.Admin.Controllers
 {
@@ -7,9 +8,9 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
     public class LoginController : Controller
     {
         private readonly db_bigexamContext _context;
-        private readonly HttpContextAccessor _httpContext;
+        private readonly IHttpContextAccessor _httpContext;
 
-        public LoginController(db_bigexamContext context, HttpContextAccessor httpContext)
+        public LoginController(db_bigexamContext context, IHttpContextAccessor httpContext)
         {
             _context = context;
             _httpContext = httpContext;
@@ -17,20 +18,23 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View("Login");
         }
         [HttpPost]
-        public IActionResult Index(string username,string password)
+        public async Task<IActionResult> Index(string username,string password)
         {
-            var member = _context.Members.FindAsync(username);
-            if(member == null)
+            var member = await _context.Members
+                .FirstOrDefaultAsync(m => m.Username == username);
+            if (member == null)
             {
                 return NotFound();
             }
 
-            if(member.Result.Password != password) {
+            if(member.Password != password) {
                 return NotFound();
             }
+
+            _httpContext.HttpContext.Session.SetInt32("role", member.Role);
             return RedirectToAction("Index","Home");
         }
     }

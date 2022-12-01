@@ -49,6 +49,11 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
         // GET: Admin/Posts/Create
         public IActionResult Create()
         {
+            List<Status> ListStatus = new List<Status>();
+            ListStatus.Add(new Status(0, "Không hoạt động"));
+            ListStatus.Add(new Status(1, "Hoạt động"));
+            ViewData["listStatus"] = new SelectList(ListStatus, "id", "name");
+             
             ViewData["Author"] = new SelectList(_context.Members, "Username", "Username");
             ViewData["CatId"] = new SelectList(_context.Categories, "Id", "Name");
             return View();
@@ -59,11 +64,19 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ShortDecription,FullContent,Img,Status,CatId,Author")] Post post)
+        public async Task<IActionResult> Create([Bind("Id,Title,ShortDecription,FullContent,Img,Status,CatId,Author")] Post post, IFormFile ful_img)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(post);
+                await _context.SaveChangesAsync();
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", post.Id + Path.GetExtension(ful_img.FileName));
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await ful_img.CopyToAsync(stream);
+                }
+                post.Img = post.Id.ToString() + Path.GetExtension(ful_img.FileName);
+                _context.Update(post);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -85,8 +98,16 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            string? img = _context.Posts.Where(p => p.Id == post.Id).Select(x => new { x.Img }).Single().Img;
+
+            ViewData["img"] = img;
+            List<Status> ListStatus = new List<Status>();
+            ListStatus.Add(new Status(0, "Không hoạt động"));
+            ListStatus.Add(new Status(1, "Hoạt động"));
+            ViewData["listStatus"] = new SelectList(ListStatus, "id", "name");
+
             ViewData["Author"] = new SelectList(_context.Members, "Username", "Username", post.Author);
-            ViewData["CatId"] = new SelectList(_context.Categories, "Id", "Id", post.CatId);
+            ViewData["CatId"] = new SelectList(_context.Categories, "Id", "Name", post.CatId);
             return View(post);
         }
 
@@ -95,7 +116,7 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ShortDecription,FullContent,Img,Status,CatId,Author")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ShortDecription,FullContent,Img,Status,CatId,Author")] Post post,IFormFile? ful_img,string image_temp)
         {
             if (id != post.Id)
             {
@@ -106,6 +127,19 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
             {
                 try
                 {
+                    if (ful_img != null)
+                    {
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", post.Id + Path.GetExtension(ful_img.FileName));
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await ful_img.CopyToAsync(stream);
+                        }
+                        post.Img = post.Id.ToString() + Path.GetExtension(ful_img.FileName);
+                    }
+                    else
+                    {
+                        post.Img = image_temp;
+                    }
                     _context.Update(post);
                     await _context.SaveChangesAsync();
                 }

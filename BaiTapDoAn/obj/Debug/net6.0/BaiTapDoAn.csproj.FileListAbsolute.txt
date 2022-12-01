@@ -263,3 +263,10 @@ G:\core\BaiTapDoAn\BaiTapDoAn\obj\Debug\net6.0\BaiTapDoAn.pdb
 G:\core\BaiTapDoAn\BaiTapDoAn\obj\Debug\net6.0\BaiTapDoAn.genruntimeconfig.cache
 G:\core\BaiTapDoAn\BaiTapDoAn\obj\Debug\net6.0\ref\BaiTapDoAn.dll
 G:\core\BaiTapDoAn\BaiTapDoAn\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_Layout.cshtml.rz.scp.css
+G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\System.Web.Mvc.dll
+G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\System.Web.Razor.dll
+G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\System.Web.Helpers.dll
+G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\System.Web.WebPages.dll
+G:\core\BaiTapDoAn\BaiTapDoAn\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

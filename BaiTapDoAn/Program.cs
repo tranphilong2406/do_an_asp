@@ -5,7 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<db_bigexamContext>();
-
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
@@ -28,7 +27,7 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
       name: "areas",
-      pattern: "{area=Admin}/{controller=Home}/{action=Index}/{id?}"
+      pattern: "{area=Admin}/{controller=Login}/{action=Index}/{id?}"
     );
     endpoints.MapControllerRoute(
       name: "default",

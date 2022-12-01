@@ -22,29 +22,31 @@
                             <span>&times;</span>
                         </button>
                     </div>
-                        <form asp-action="Create">
-                    <div class="modal-body">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <label asp-for="Username" class="control-label"></label>
-                                <input asp-for="Username" class="form-control" />
-                                <span asp-validation-for="Username" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Password" class="control-label"></label>
-                                <input asp-for="Password" class="form-control" />
-                                <span asp-validation-for="Password" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Role" class="control-label"></label>
-                                <select asp-for="Role" class="form-control" asp-items="ViewBag.listRoles"></select>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Status" class="control-label"></label>
-                                <select asp-for="Status" class="form-control" asp-items="ViewBag.listStatus"></select>
-                            </div>
-                            
-                    </div>
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Username" class="control-label"></label>
+                            <input asp-for="Username" class="form-control" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Role" class="control-label"></label>
+                            <input asp-for="Role" class="form-control" />
+                            <span asp-validation-for="Role" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Status" class="control-label"></label>
+                            <input asp-for="Status" class="form-control" />
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -55,6 +57,112 @@
         </div>
     </div>
 </p>
+
+@*edit*@
+
+<div class="modal fade" id="editval">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><strong>CẬP NHẬT TÀI KHOẢN</strong></h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <form asp-action="Edit">
+                <div class="modal-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Username" class="control-label"></label>
+                    <input asp-for="Username" class="form-control" id="editname"/>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" id="editpass"/>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                    <div class="form-group">
+                        <label asp-for="Role" class="control-label"></label>
+                        <select asp-for="Role" class="form-control" asp-items="ViewBag.listRoles" id="editrole"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Status" class="control-label"></label>
+                        <select asp-for="Status" class="form-control" asp-items="ViewBag.listStatus" id="editstatus"></select>
+                    </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+                </div>
+            
+                <div class="modal-footer form-group">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*detail*@
+<div class="modal fade" id="detailsval">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><strong>CHI TIẾT TÀI KHOẢN</strong></h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <form asp-action="Detail">
+                <div class="modal-body form-group">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label"></label>
+                        <input readonly asp-for="Username" class="form-control" id="detailname" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input readonly asp-for="Password" class="form-control" id="detailpass" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Role" class="control-label"></label>
+                        <select asp-for="Role" class="form-control" asp-items="ViewBag.listRoles" id="detailrole"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Status" class="control-label"></label>
+                        <select asp-for="Status" class="form-control" asp-items="ViewBag.listStatus" id="detailstatus"></select>
+                    </div>
+                </div>
+                <div class="modal-footer form-group">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*delete*@
+<div class="modal fade" id="deletecf">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form asp-action="Delete">
+                <div class="modal-header">Delete confirm</div>
+                <div class="modal-body">
+
+                <input type="hidden" asp-for="Username" />
+                Bạn có chắc muốn xóa người dùng này không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" value="Delete" class="btn btn-primary">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <table class="table table-striped table-bordered zero-configuration">
     <thead>
         <tr>
@@ -78,47 +186,102 @@
     <tbody>
         @{
             var objects = JArray.Parse(ViewBag.listMem);
-            @foreach (var item in objects)
+                        @foreach (var item in objects)
             {
-                <tr>
-                    <td>
-                        @item["Username"]
-                    </td>
-                    <td>
-                        @item["Password"]
-                    </td>
-                    <td>
-                        @if (@item["Role"] == 1)
+                            <tr>
+                                <td>
+                                    @item["Username"]
+                                </td>
+                                <td>
+                                    @item["Password"]
+                                </td>
+                                <td>
+                                    @if (@item["Role"] == 1)
                         {
-                            <span>Admin</span>
+                                        <span>Admin</span>
                         }
                         else
                         {
-                            <span>Editor</span>
+                                        <span>Editor</span>
                         }
-                    </td>
-                    <td>
-                        @if (@item["Status"] == 1)
+                                </td>
+                                <td>
+                                    @if (@item["Status"] == 1)
                         {
-                            <span>Hoạt động</span>
+                                        <span>Hoạt động</span>
                         }
                         else
                         {
-                            <span>Không hoạt động</span>
+                                        <span>Không hoạt động</span>
                         }
-                    </td>
-                    <td>
-                        <div class="button-group">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary" id="edit" data-id="@item["Id"]" data-toggle="modal" data-target="#editval">Sửa</button>
-                                <button type="button" class="btn btn-primary" id="details" data-id="@item["Id"]" data-toggle="modal" data-target="#detailsval">Xem</button>
-                                <button type="button" class="btn btn-primary" id="delete" data-id="@item["Id"]" data-toggle="modal" data-target="#deletecf">Xóa</button>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
+                                </td>
+                                <td>
+                                    <div class="button-group">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary" id="edit" data-id="@item["Username"]" data-toggle="modal" data-target="#editval">Sửa</button>
+                                            <button type="button" class="btn btn-primary" id="details" data-id="@item["Username"]" data-toggle="modal" data-target="#detailsval">Xem</button>
+                                            <button type="button" class="btn btn-primary" id="delete" data-id="@item["Username"]" data-toggle="modal" data-target="#deletecf">Xóa</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
             }
 
         }
     </tbody>
 </table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+            <script type="text/javascript" >
+                $(document).on("click", "#delete", function () {
+                    var eventId = $(this).data('id');
+
+                    $(".modal-body #delvalue").val(eventId);
+                });
+
+            $(document).on("click", "#edit", function () {
+                var eventId = $(this).data('id');
+                $.ajax({
+                    url: '@Url.Action("Edit","Members")',
+                    datatype: "JSON",
+                    type: "GET",
+                    data: { id: eventId },
+                    success: function (data) {
+                        var list = JSON.parse(data);
+                        $(".modal-body #editname").val(list.Username);
+                        $(".modal-body #editpass").val(list.Password);
+                        $(".modal-body #editlrole").val(list.Role);
+                        $(".modal-body #editstatus").val(list.Status);
+                    },
+                    error: function (xhr) {
+                        alert('error');
+                    }
+                });
+            });
+            $(document).on("click", "#details", function () {
+                var eventId = $(this).data('id');
+                $.ajax({
+                    url: '@Url.Action("Details","Members")',
+                    datatype: "JSON",
+                    type: "GET",
+                    data: { id: eventId },
+                    success: function (data) {
+                        var list = JSON.parse(data);
+                        $(".modal-body #detailname").val(list.Username);
+                        $(".modal-body #detailpass").val(list.Password);
+                        $(".modal-body #detailrole").val(list.Role);
+                        $(".modal-body #detailstatus").val(list.Status);
+                    },
+                    error: function (xhr) {
+                        alert('error');
+                    }
+                });
+
+                //$(".modal-body #detailstatus").val(details["Status"]);
+            });
+        </script>
+}

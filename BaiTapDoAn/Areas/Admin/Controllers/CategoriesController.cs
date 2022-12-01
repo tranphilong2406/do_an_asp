@@ -46,7 +46,7 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            return Json(category.ToJson()); ;
+            return Json(category.ToJson());
         }
 
         // GET: Admin/Categories/Create
@@ -84,7 +84,7 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            return View(category);
+            return Json(category.ToJson());
         }
 
         // POST: Admin/Categories/Edit/5

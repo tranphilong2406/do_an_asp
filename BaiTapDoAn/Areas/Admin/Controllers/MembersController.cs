@@ -54,7 +54,7 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            return View(member);
+            return Json(member.ToJson());
         }
 
         // GET: Admin/Members/Create
@@ -92,7 +92,7 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            return View(member);
+            return Json(member.ToJson());
         }
 
         // POST: Admin/Members/Edit/5
