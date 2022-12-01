@@ -103,9 +103,9 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Username,Password,Role,Status")] Member member)
+        public async Task<IActionResult> Edit(string username, [Bind("Username,Password,Role,Status")] Member member)
         {
-            if (id != member.Username)
+            if (username != member.Username)
             {
                 return NotFound();
             }
@@ -154,13 +154,13 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
         // POST: Admin/Members/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(string username)
         {
             if (_context.Members == null)
             {
                 return Problem("Entity set 'db_bigexamContext.Members'  is null.");
             }
-            var member = await _context.Members.FindAsync(id);
+            var member = await _context.Members.FindAsync(username);
             if (member != null)
             {
                 member.Status = 0;
