@@ -1,9 +1,12 @@
-﻿using BaiTapDoAn.Areas.Admin.Models;
+﻿using BaiTapDoAn.Areas.Admin.Filter;
+using BaiTapDoAn.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BaiTapDoAn.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [TypeFilter(typeof(AuthenticationFilter))]
+    [TypeFilter(typeof(AuthorizationFilter))]
     public class HomeController : Controller
     {
         private readonly db_bigexamContext _context;
@@ -18,6 +21,11 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
             ViewBag.NumCat = _context.Categories.Where(m=>m.Status == 1).Count();
             ViewBag.NumUser = _context.Members.Where(m => m.Status == 1).Count();
             return View();
+        }
+
+        public IActionResult Denied()
+        {
+            return View("PermissionDenied");
         }
     }
 }

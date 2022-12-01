@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Filter\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

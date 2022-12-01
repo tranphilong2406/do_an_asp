@@ -7,10 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BaiTapDoAn.Areas.Admin.Models;
 using NuGet.Protocol;
+using BaiTapDoAn.Areas.Admin.Filter;
 
 namespace BaiTapDoAn.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [TypeFilter(typeof(AuthenticationFilter))]
+    [TypeFilter(typeof(AuthorizationFilter))]
     public class CategoriesController : Controller
     {
         private readonly db_bigexamContext _context;

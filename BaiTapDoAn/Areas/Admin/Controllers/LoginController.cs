@@ -18,6 +18,14 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            if(_httpContext.HttpContext.Session.GetInt32("role") != null)
+            {
+                if(_httpContext.HttpContext.Session.GetInt32("role") == 0)
+                {
+                    return RedirectToAction("Index","Posts");
+                }
+                return RedirectToAction("Index","Home");
+            }
             return View("Login");
         }
         [HttpPost]
@@ -35,7 +43,16 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
             }
 
             _httpContext.HttpContext.Session.SetInt32("role", member.Role);
-            return RedirectToAction("Index","Home");
+            if(member.Role == 1) { 
+                return RedirectToAction("Index","Home");
+            }
+            return RedirectToAction("Index", "Posts");
+        }
+
+        public IActionResult Logout()
+        {
+            _httpContext.HttpContext.Session.Remove("role");
+            return RedirectToAction("Index");
         }
     }
 }

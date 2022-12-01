@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BaiTapDoAn.Areas.Admin.Models;
+using BaiTapDoAn.Areas.Admin.Filter;
 
 namespace BaiTapDoAn.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [TypeFilter(typeof(AuthenticationFilter))]
     public class PostsController : Controller
     {
         private readonly db_bigexamContext _context;
