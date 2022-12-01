@@ -60,7 +60,7 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
             ListStatus.Add(new Status(1, "Hoạt động"));
             ViewData["listStatus"] = new SelectList(ListStatus, "id", "name");
              
-            ViewData["Author"] = new SelectList(_context.Members, "Username", "Username");
+            ViewData["Author"] = new SelectList(_context.Members.Where(m=>m.Role == 0), "Username", "Username");
             ViewData["CatId"] = new SelectList(_context.Categories, "Id", "Name");
             return View();
         }
@@ -112,7 +112,7 @@ namespace BaiTapDoAn.Areas.Admin.Controllers
             ListStatus.Add(new Status(1, "Hoạt động"));
             ViewData["listStatus"] = new SelectList(ListStatus, "id", "name");
 
-            ViewData["Author"] = new SelectList(_context.Members, "Username", "Username", post.Author);
+            ViewData["Author"] = new SelectList(_context.Members.Where(m=>m.Role ==0), "Username", "Username", post.Author);
             ViewData["CatId"] = new SelectList(_context.Categories, "Id", "Name", post.CatId);
             return View(post);
         }
