@@ -38,12 +38,12 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a asp-action="Index" asp-controller="Home">
-                    <b class="logo-abbr"><img src="~/Admin/images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="~/Admin/images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                        <img src="~/Admin/images/logo-text.png" alt="">
-                    </span>
+                <a href="index.html">
+                    <b class="logo-abbr" style="color:white;font-size:30px">L</b>
+                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
+                    <h2 class="brand-title" style="color:white">
+                        Phi Long
+                    </h2>
                 </a>
             </div>
         </div>
@@ -80,22 +80,12 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="~/Admin/images/user/1.png" height="40" width="40" alt="">
+                                <img src="~/Admin/images/users/4.jpg" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile   dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li>
-                                            <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="email-inbox.html"><i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill badge-primary">3</div></a>
-                                        </li>
-
-                                        <hr class="my-2">
-                                        <li>
-                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
+                                        
                                         <li><a asp-action="Logout" asp-controller="Login"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>

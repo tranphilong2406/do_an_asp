@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "163UnEerkrtBs1OOaBDaF8vHI0LJBvCEVC+5MyftPlI=",
+  "Hash": "GM8UqsUoNALN5d2SY9/xxU+YeYdY9Lg4PCBwh553glk=",
   "Source": "BaiTapDoAn",
   "BasePath": "_content/BaiTapDoAn",
   "Mode": "Default",
@@ -88874,6 +88874,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "G:\\core\\BaiTapDoAn\\BaiTapDoAn\\wwwroot\\images\\14.jpg",
+      "SourceId": "BaiTapDoAn",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\core\\BaiTapDoAn\\BaiTapDoAn\\wwwroot\\",
+      "BasePath": "_content/BaiTapDoAn",
+      "RelativePath": "images/14.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\14.jpg"
     },
     {
       "Identity": "G:\\core\\BaiTapDoAn\\BaiTapDoAn\\wwwroot\\js\\site.js",
